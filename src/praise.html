@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.1/jquery.js">
+    </script>
+  <script src="//cdn.bootcss.com/systemjs/0.20.7/system.js"></script>
+    <style media="screen">
+        .thumb {
+            width: 100px;
+            height: 50px;
+            margin: 20px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 28px;
+            border-radius: 5px;
+            background: green;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="thumb" id="thumb" type="button" name="button">赞</button>
+    <button type="button" name="button" style="display:none;"></button>
+
+    <script type="text/javascript">
+        System.config({
+            // set all requires to "lib" for library code
+            baseURL: '',
+            // set "app" as an exception for our application code
+            paths: {
+
+            }
+        });
+        System.import('index.js').then(function (m) {
+          $.extend({thumb: m.default.Thumb});
+          var thumb = new $.thumb('#thumb',0);
+          thumb.clickAction();
+        })
+    </script>
+</body>
+
+</html>
